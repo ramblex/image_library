@@ -1,0 +1,10 @@
+<div class="container">
+  <%= form_for @example do |f| %>
+    <%= render partial: 'image_library/uploads/field', object: @example %>
+    <%= f.text_field_tag :image_library_upload_id %>
+
+    <%= f.submit, name: "", class: "btn btn-primary" %>
+  <% end %>
+
+  <%= render partial: 'image_library/uploads/chooser' %>
+</div>

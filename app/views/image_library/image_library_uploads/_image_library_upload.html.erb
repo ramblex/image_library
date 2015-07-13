@@ -1,0 +1,9 @@
+<div class="image_library-upload">
+  <a href="#" title="<%= image_library_upload.image.file.filename %>"
+    data-id="<%= image_library_upload.id %>"
+    <% ImageLibrary::ImageUploader.versions.keys.each do |version| %>
+      data-<%= version %>="<%= image_library_upload.image.send(version).url %>"
+    <% end %> class="image">
+    <%= image_tag image_library_upload.image.gallery.url %>
+  </a>
+</div>

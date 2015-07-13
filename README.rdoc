@@ -1,0 +1,71 @@
+= Rails Image Library
+
+A very opinionated Image Library for Rails. Uses jQuery file upload
+CarrierWave, MiniMagick, Kaminari and relies on the application having jQuery
+and bootstrap with CSS and JS for modals. It also assumes you're using
+application.scss rather than application.css.
+
+== Features
+
+- Shows a real-time progress bar for uploads
+- Allows custom sizes to be added to the library
+
+== Installation
+
+Add the following to your Gemfile:
+
+    gem 'image_library', '~> 0.0.1'
+
+Install the migrations:
+
+    > bundle exec rake image_library:install:migrations
+    > bundle exec rake db:migrate
+
+== Basic usage
+
+Add the following to your application.scss:
+
+    @import "bootstrap-sprockets";
+    @import "bootstrap";
+    @import "image_library/application";
+
+Add the following to your application.js:
+
+    //= require bootstrap
+    //= require image_library/application
+
+Generate a migration to link your model with the gallery (posts in this example):
+
+    > bundle exec rails g migration add_image_library_upload_to_posts image_library_upload:references
+    > bundle exec rake db:migrate
+
+Add the following to your _form.html.erb:
+
+    <%= form_for @post do |f| %>
+      <%= render partial: 'image_library/uploads/field', object: @post %>
+      <%= f.hidden_field_tag :image_upload_id %>
+
+      ... other form fields
+    <% end %>
+
+    <%= render partial: 'image_library/uploads/chooser' %>
+
+== Adding different sizes
+
+Add the following to an initializer e.g. `config/initializers/image_library.rb`.
+This will add a large version.
+
+    ImageLibrary::ImageUploader.class_eval do
+      version :large do
+        process :resize_and_pad => [300, 300]
+      end
+    end
+
+== Authorisation and authentication
+
+The gem assumes you will use Devise and Pundit. To enable authentication, add
+the following to an initializer:
+
+    ImageLibrary::UploadsController.class_eval do
+      before_action :authenticate_user!
+    end

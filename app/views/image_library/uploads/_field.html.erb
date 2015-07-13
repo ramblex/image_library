@@ -1,0 +1,20 @@
+<% size = local_assigns[:size] || :gallery %>
+<div class="form-group<%= " has-error" if field.errors[:image_library_upload] %>">
+  <div class="image_library-upload-field" data-thumb-size="<%= size %>">
+    <%= button_tag "Choose or upload image",
+      type: "button",
+      data: { target: "#choose-upload-modal", toggle: "modal" },
+      class: "btn btn-default" %>
+
+    <div class="upload-choice-thumb">
+      <% unless field.image_library_upload.nil? %>
+        <%= image_tag field.image_library_upload.image.send(size).url,
+                      class: "img-responsive" %>
+      <% end %>
+    </div>
+
+    <div class="error-message">
+      <%= field.errors[:image_library_upload].try(:first) %>
+    </div>
+  </div>
+</div>

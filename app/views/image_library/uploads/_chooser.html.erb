@@ -1,0 +1,18 @@
+<div class="modal" id="choose-upload-modal" data-url="<%= image_library.uploads_path(format: :js) %>">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Choose or upload image</h4>
+      </div>
+
+      <div class="modal-body">
+        <div class="row">
+          <%= render partial: "image_library/uploads/form" %>
+        </div>
+        <div id="image_library-uploads" class="clearfix">Loading...</div>
+        <div id="image_library-pagination"></div>
+      </div>
+    </div>
+  </div>
+</div>

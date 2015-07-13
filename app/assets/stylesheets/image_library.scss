@@ -1,0 +1,11 @@
+@import "jquery.fileupload";
+
+#image_library-uploads {
+  .image_library-upload {
+    float: left;
+    margin-right: 15px;
+    margin-bottom: 15px;
+    height: 85px;
+    width: 85px;
+  }
+}

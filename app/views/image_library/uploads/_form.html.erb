@@ -1,0 +1,26 @@
+<%= form_tag image_library.uploads_path, id: 'image_library-fileupload' do %>
+  <div class="col-md-3">
+    <span class="btn btn-default fileinput-button">
+      <i class="glyphicon glyphicon-plus"></i>
+      Upload image&hellip;
+      <%= file_field_tag "upload[files]", multiple: true %>
+    </span>
+  </div>
+
+  <div class="col-md-4">
+    <div class="progress progress-success active" id="upload-progress">
+      <div class="progress-bar" style="width: 0%;"></div>
+    </div>
+  </div>
+<% end %>
+
+<div class="col-md-5">
+  <%= form_tag image_library.uploads_path, method: :get, remote: true do %>
+    <div class="input-group">
+      <%= text_field_tag :query, '', class: 'form-control' %>
+      <div class="input-group-btn">
+        <%= button_tag "Search", name: "", class: "btn btn-default" %>
+      </div>
+    </div>
+  <% end %>
+</div>

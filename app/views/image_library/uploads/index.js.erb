@@ -1,0 +1,5 @@
+$('#image_library-uploads').html('<%= escape_javascript(render(partial: @uploads)) %>');
+$('#image_library-pagination').html('<%= escape_javascript(paginate(@uploads, params: {
+  controller: 'uploads',
+  action: 'index',
+}, param_name: :image_library_page, remote: true)) %>');
