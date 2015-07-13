@@ -5,7 +5,6 @@ require "jquery-fileupload-rails"
 module ImageLibrary
   module Hooks
     autoload :PunditAuthorization, 'image_library/hooks/pundit'
-    autoload :CanCanAuthorization, 'image_library/hooks/cancan'
   end
 
   module Helpers
