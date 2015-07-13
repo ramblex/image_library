@@ -17,9 +17,6 @@ module ImageLibrary
       end
 
       def authorized?(action, model_object = nil)
-        puts "Action: #{action}"
-        puts "Model object: #{model_object}"
-        puts @controller
         Pundit.policy(@controller.current_user_for_pundit, model_object).public_send(action.to_s + '?') if action
       end
 
