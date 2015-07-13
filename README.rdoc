@@ -5,6 +5,8 @@ CarrierWave, MiniMagick, Kaminari and relies on the application having jQuery
 and bootstrap with CSS and JS for modals. It also assumes you're using
 application.scss rather than application.css.
 
+It's not ready for production sites yet!
+
 == Features
 
 - Shows a real-time progress bar for uploads
@@ -63,9 +65,9 @@ This will add a large version.
 
 == Authorisation and authentication
 
-The gem assumes you will use Devise and Pundit. To enable authentication, add
-the following to an initializer:
+The gem has hooks for Devise and Pundit. To enable authentication and
+authorisation, add the following to an initializer:
 
-    ImageLibrary::UploadsController.class_eval do
-      before_action :authenticate_user!
+    ImageLibrary.setup do |config|
+      config.authorize_with :pundit
     end
