@@ -11,7 +11,7 @@ module ImageLibrary
     def create
       @upload = ImageLibraryUpload.create(image: params[:upload][:files])
       @authorization_adapter.try(:authorize, :create, @upload)
-      render partial: @upload
+      render partial: "image_library/uploads/upload", object: @upload
     end
 
     def destroy

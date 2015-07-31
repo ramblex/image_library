@@ -1,0 +1,14 @@
+<div class="image_library-upload">
+  <%= link_to "&times;".html_safe, image_library.upload_path(upload),
+    method: :delete, class: "remove-upload",
+    data: { confirm: "Are you sure you want to remove this image?" },
+    remote: true
+  %>
+  <a href="#" title="<%= upload.image.file.filename %>"
+    data-id="<%= upload.id %>"
+    <% ImageLibrary::ImageUploader.versions.keys.each do |version| %>
+      data-<%= version %>="<%= upload.image.send(version).url %>"
+    <% end %> class="image">
+    <%= image_tag upload.image.gallery.url %>
+  </a>
+</div>

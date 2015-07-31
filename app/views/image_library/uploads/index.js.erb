@@ -1,4 +1,4 @@
-$('#image_library-uploads').html('<%= escape_javascript(render(partial: @uploads)) %>');
+$('#image_library-uploads').html('<%= escape_javascript(render(partial: "image_library/uploads/upload", collection: @uploads)) %>');
 $('#image_library-pagination').html('<%= escape_javascript(paginate(@uploads, params: {
   controller: 'uploads',
   action: 'index',
