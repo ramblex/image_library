@@ -33,10 +33,12 @@ $(function() {
 
   var thumbSize;
   var thumbHolder;
+  var uploadInput;
   $('form').on('click', '[data-target="#choose-upload-modal"]', function() {
     var $field = $(this).closest('.image_library-upload-field');
     thumbSize = $field.attr('data-thumb-size');
     thumbHolder = $field.find('.upload-choice-thumb');
+    uploadInput = $field.find('input');
   });
 
   $('#image_library-uploads').on('click', '.image', function(ev) {
@@ -49,7 +51,7 @@ $(function() {
       $('#choose-upload-modal').modal('hide');
       var id = $image.attr('data-id');
       if (window.uploadChosen === undefined) {
-        $('input[id$=image_library_upload_id]').val(id);
+        uploadInput.val(id);
         thumbHolder
           .html('<img src="'+$image.attr('data-'+thumbSize)+'" class="img-responsive" />');
       } else {
