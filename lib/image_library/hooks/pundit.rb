@@ -24,10 +24,7 @@ module ImageLibrary
 
       module ControllerExtension
         def current_user_for_pundit
-          # use image_library_current_user instead of default current_user so
-          # it works with whatever current_user method is defined in
-          # ImageLibrary.
-          image_library_current_user
+          UserContext.new(current_user, session)
         end
       end
     end
