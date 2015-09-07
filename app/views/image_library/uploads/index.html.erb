@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="uploads-container">
+    <div class="row">
+      <%= render partial: "form" %>
+    </div>
+
+    <div id="image_library-uploads" class="clearfix">
+      <%= render partial: "image_library/uploads/upload", collection: @uploads %>
+    </div>
+    <div id="image_library-pagination">
+      <%= paginate(@uploads, params: {
+        controller: 'uploads',
+        action: 'index'
+      }, param_name: :image_library_page, remote: true) %>
+    </div>
+  </div>
+</div>
+
+<%= render template: "layouts/uploads" %>
