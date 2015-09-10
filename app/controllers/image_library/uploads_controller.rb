@@ -1,7 +1,9 @@
 module ImageLibrary
   class UploadsController < ApplicationController
+    layout 'application'
+
     def index
-      @authorization_adapter.try(:authorize, :index, @uploads)
+      @authorization_adapter.try(:authorize, :index, ImageLibraryUpload.new)
       @uploads = ImageLibraryUpload.page(params[:image_library_page])
       if params[:query].present?
         @uploads = @uploads.where('lower(image) like ?', "%#{params[:query].downcase}%")
