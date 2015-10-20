@@ -20,7 +20,7 @@ Gem::Specification.new do |s|
   s.add_dependency "rails", "~> 4.2.3"
   s.add_dependency "kaminari", "~> 0.16.1"
   s.add_dependency "carrierwave", "~> 0.10.0"
-  s.add_dependency "mini_magick", "~> 4.2.7"
+  s.add_dependency "mini_magick", "~> 4.3.6"
   s.add_dependency "jquery-fileupload-rails", "~> 0.4.1"
 
   s.add_development_dependency "pg"
